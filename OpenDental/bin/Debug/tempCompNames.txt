@@ -1,0 +1,67 @@
+服务器名称            注解
+
+-------------------------------------------------------------------------------
+\\11-323                                                                       
+\\2013-20141011IE                                                              
+\\2013-20150827OA                                                              
+\\2013-20150906ZQ                                                              
+\\2013-20150925UG                                                              
+\\ABC-PC                                                                       
+\\ABEL-L                                                                       
+\\AWAYHOME-PC                                                                  
+\\BINGHAM-PC                                                                   
+\\BOXU                                                                         
+\\CY-PC                                                                        
+\\DEAN-PC                                                                      
+\\DESKTOP-4BR3AFR                                                              
+\\DESKTOP-4ULG1N6                                                              
+\\DESKTOP-51UNCR9                                                              
+\\DESKTOP-HPG9EDD                                                              
+\\DESKTOP-JTBJ0J4      computerInLab                                           
+\\DESKTOP-N5AB03S      lavenderCathy                                           
+\\DESKTOP-NBI0CU2                                                              
+\\DESKTOP-ODM2VSJ                                                              
+\\DESKTOP-P8OPJAD                                                              
+\\ELM-ISE                                                                      
+\\FEIZAI-PC                                                                    
+\\FISH-PC                                                                      
+\\FLT                                                                          
+\\GUOYUCHEN-PC                                                                 
+\\HUANG                                                                        
+\\JASON-PC                                                                     
+\\JEFFREY-ALL-SER      jeffrey-All-Series server (Samba, Ubuntu)               
+\\JIALAB                                                                       
+\\KEVIN-PC             Kevin-PC                                                
+\\KIDJIANG                                                                     
+\\LGM-WORKSTATION      LGM-WorkStation                                         
+\\LJQ-PC                                                                       
+\\LL-PC                                                                        
+\\LYQ-PC                                                                       
+\\MASTER               master server (Samba, Ubuntu)                           
+\\MISHU                mishu                                                   
+\\MUSHROOM                                                                     
+\\NEW-PC                                                                       
+\\OSFPU                osfpu server (Samba, Ubuntu)                            
+\\PC-201303091617                                                              
+\\PC-201508171113      BaiYu                                                   
+\\PC201602260315                                                               
+\\QINGHUA-PC                                                                   
+\\QMM-PC                                                                       
+\\RAINSTORM-PC                                                                 
+\\RAYALOFFICE-PC                                                               
+\\SCOTTDENG-PC                                                                 
+\\SHEEPYANG-PC                                                                 
+\\SHINELON-PC                                                                  
+\\STOKE-PC                                                                     
+\\THSS                 thss                                                    
+\\WIN-7QH4TVMJHM6                                                              
+\\WIN-9MDK14I8LEQ                                                              
+\\WIN-FAPQQ1PUUO1                                                              
+\\WIN-L2K9FKN19R8                                                              
+\\WIN-OI9T3E506I4                                                              
+\\WXC                                                                          
+\\WYQ10                                                                        
+\\ZHAOXIN-PC                                                                   
+\\ZYP-PC                                                                       
+命令成功完成。
+

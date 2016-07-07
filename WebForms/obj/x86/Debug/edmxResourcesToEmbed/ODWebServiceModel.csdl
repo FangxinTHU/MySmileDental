@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="odwebserviceModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="ODWebServiceEntities">
+    <EntitySet Name="webforms_preference" EntityType="odwebserviceModel.webforms_preference" />
+    <EntitySet Name="webforms_sheet" EntityType="odwebserviceModel.webforms_sheet" />
+    <EntitySet Name="webforms_sheetdef" EntityType="odwebserviceModel.webforms_sheetdef" />
+    <EntitySet Name="webforms_sheetfield" EntityType="odwebserviceModel.webforms_sheetfield" />
+    <EntitySet Name="webforms_sheetfielddef" EntityType="odwebserviceModel.webforms_sheetfielddef" />
+    <AssociationSet Name="FK_webforms_sheet_DentalOfficeID" Association="odwebserviceModel.FK_webforms_sheet_DentalOfficeID">
+      <End Role="webforms_preference" EntitySet="webforms_preference" />
+      <End Role="webforms_sheet" EntitySet="webforms_sheet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_webforms_sheetdef_DentalOfficeID" Association="odwebserviceModel.FK_webforms_sheetdef_DentalOfficeID">
+      <End Role="webforms_preference" EntitySet="webforms_preference" />
+      <End Role="webforms_sheetdef" EntitySet="webforms_sheetdef" />
+    </AssociationSet>
+    <AssociationSet Name="FK_webforms_sheetfield_SheetID" Association="odwebserviceModel.FK_webforms_sheetfield_SheetID">
+      <End Role="webforms_sheet" EntitySet="webforms_sheet" />
+      <End Role="webforms_sheetfield" EntitySet="webforms_sheetfield" />
+    </AssociationSet>
+    <AssociationSet Name="FK_webforms_sheetfielddef_WebSheetDefID" Association="odwebserviceModel.FK_webforms_sheetfielddef_WebSheetDefID">
+      <End Role="webforms_sheetdef" EntitySet="webforms_sheetdef" />
+      <End Role="webforms_sheetfielddef" EntitySet="webforms_sheetfielddef" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="webforms_preference">
+    <Key>
+      <PropertyRef Name="DentalOfficeID" />
+    </Key>
+    <Property Type="Int64" Name="DentalOfficeID" Nullable="false" />
+    <Property Type="Int32" Name="ColorBorder" Nullable="false" />
+    <Property Type="String" Name="CultureName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="webforms_sheet" Relationship="odwebserviceModel.FK_webforms_sheet_DentalOfficeID" FromRole="webforms_preference" ToRole="webforms_sheet" />
+    <NavigationProperty Name="webforms_sheetdef" Relationship="odwebserviceModel.FK_webforms_sheetdef_DentalOfficeID" FromRole="webforms_preference" ToRole="webforms_sheetdef" />
+  </EntityType>
+  <EntityType Name="webforms_sheet">
+    <Key>
+      <PropertyRef Name="SheetID" />
+    </Key>
+    <Property Type="Int64" Name="SheetID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="Int64" Name="DentalOfficeID" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="SheetType" Nullable="false" />
+    <Property Type="DateTime" Name="DateTimeSheet" Nullable="false" />
+    <Property Type="Single" Name="FontSize" Nullable="false" />
+    <Property Type="String" Name="FontName" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Width" Nullable="false" />
+    <Property Type="Int32" Name="Height" Nullable="false" />
+    <Property Type="SByte" Name="IsLandscape" Nullable="false" />
+    <NavigationProperty Name="webforms_preference" Relationship="odwebserviceModel.FK_webforms_sheet_DentalOfficeID" FromRole="webforms_sheet" ToRole="webforms_preference" />
+    <NavigationProperty Name="webforms_sheetfield" Relationship="odwebserviceModel.FK_webforms_sheetfield_SheetID" FromRole="webforms_sheet" ToRole="webforms_sheetfield" />
+  </EntityType>
+  <EntityType Name="webforms_sheetdef">
+    <Key>
+      <PropertyRef Name="WebSheetDefID" />
+    </Key>
+    <Property Type="Int64" Name="WebSheetDefID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="Int64" Name="DentalOfficeID" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="SheetType" Nullable="false" />
+    <Property Type="Single" Name="FontSize" Nullable="false" />
+    <Property Type="String" Name="FontName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Width" Nullable="false" />
+    <Property Type="Int32" Name="Height" Nullable="false" />
+    <Property Type="SByte" Name="IsLandscape" Nullable="false" />
+    <NavigationProperty Name="webforms_preference" Relationship="odwebserviceModel.FK_webforms_sheetdef_DentalOfficeID" FromRole="webforms_sheetdef" ToRole="webforms_preference" />
+    <NavigationProperty Name="webforms_sheetfielddef" Relationship="odwebserviceModel.FK_webforms_sheetfielddef_WebSheetDefID" FromRole="webforms_sheetdef" ToRole="webforms_sheetfielddef" />
+  </EntityType>
+  <EntityType Name="webforms_sheetfield">
+    <Key>
+      <PropertyRef Name="SheetFieldID" />
+    </Key>
+    <Property Type="Int64" Name="SheetFieldID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="Int64" Name="SheetID" Nullable="false" />
+    <Property Type="Int32" Name="FieldType" Nullable="false" />
+    <Property Type="String" Name="FieldName" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FieldValue" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="Single" Name="FontSize" Nullable="false" />
+    <Property Type="String" Name="FontName" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="SByte" Name="FontIsBold" Nullable="false" />
+    <Property Type="Int32" Name="XPos" Nullable="false" />
+    <Property Type="Int32" Name="YPos" Nullable="false" />
+    <Property Type="Int32" Name="Width" Nullable="false" />
+    <Property Type="Int32" Name="Height" Nullable="false" />
+    <Property Type="Int32" Name="GrowthBehavior" Nullable="false" />
+    <Property Type="String" Name="RadioButtonValue" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RadioButtonGroup" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="SByte" Name="IsRequired" Nullable="false" />
+    <Property Type="Int32" Name="TabOrder" Nullable="false" />
+    <Property Type="String" Name="ReportableName" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="webforms_sheet" Relationship="odwebserviceModel.FK_webforms_sheetfield_SheetID" FromRole="webforms_sheetfield" ToRole="webforms_sheet" />
+    <Property Type="Int32" Name="TextAlign" Nullable="false" />
+    <Property Type="Int32" Name="ItemColor" Nullable="false" />
+  </EntityType>
+  <EntityType Name="webforms_sheetfielddef">
+    <Key>
+      <PropertyRef Name="WebSheetFieldDefID" />
+    </Key>
+    <Property Type="Int64" Name="WebSheetFieldDefID" Nullable="false" a:StoreGeneratedPattern="Identity" xmlns:a="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="Int64" Name="WebSheetDefID" Nullable="false" />
+    <Property Type="Int32" Name="FieldType" Nullable="false" />
+    <Property Type="String" Name="FieldName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FieldValue" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="Single" Name="FontSize" Nullable="false" />
+    <Property Type="String" Name="FontName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="SByte" Name="FontIsBold" Nullable="false" />
+    <Property Type="Int32" Name="XPos" Nullable="false" />
+    <Property Type="Int32" Name="YPos" Nullable="false" />
+    <Property Type="Int32" Name="Width" Nullable="false" />
+    <Property Type="Int32" Name="Height" Nullable="false" />
+    <Property Type="Int32" Name="GrowthBehavior" Nullable="false" />
+    <Property Type="String" Name="RadioButtonValue" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RadioButtonGroup" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Type="SByte" Name="IsRequired" Nullable="false" />
+    <Property Type="String" Name="ImageData" Nullable="false" MaxLength="16777215" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="TabOrder" Nullable="false" />
+    <Property Type="String" Name="ReportableName" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="webforms_sheetdef" Relationship="odwebserviceModel.FK_webforms_sheetfielddef_WebSheetDefID" FromRole="webforms_sheetfielddef" ToRole="webforms_sheetdef" />
+    <Property Type="Int32" Name="TextAlign" Nullable="false" />
+    <Property Type="Int32" Name="ItemColor" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_webforms_sheet_DentalOfficeID">
+    <End Type="odwebserviceModel.webforms_preference" Role="webforms_preference" Multiplicity="1" />
+    <End Type="odwebserviceModel.webforms_sheet" Role="webforms_sheet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webforms_preference">
+        <PropertyRef Name="DentalOfficeID" />
+      </Principal>
+      <Dependent Role="webforms_sheet">
+        <PropertyRef Name="DentalOfficeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_webforms_sheetdef_DentalOfficeID">
+    <End Type="odwebserviceModel.webforms_preference" Role="webforms_preference" Multiplicity="1" />
+    <End Type="odwebserviceModel.webforms_sheetdef" Role="webforms_sheetdef" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webforms_preference">
+        <PropertyRef Name="DentalOfficeID" />
+      </Principal>
+      <Dependent Role="webforms_sheetdef">
+        <PropertyRef Name="DentalOfficeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_webforms_sheetfield_SheetID">
+    <End Type="odwebserviceModel.webforms_sheet" Role="webforms_sheet" Multiplicity="1" />
+    <End Type="odwebserviceModel.webforms_sheetfield" Role="webforms_sheetfield" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webforms_sheet">
+        <PropertyRef Name="SheetID" />
+      </Principal>
+      <Dependent Role="webforms_sheetfield">
+        <PropertyRef Name="SheetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_webforms_sheetfielddef_WebSheetDefID">
+    <End Type="odwebserviceModel.webforms_sheetdef" Role="webforms_sheetdef" Multiplicity="1" />
+    <End Type="odwebserviceModel.webforms_sheetfielddef" Role="webforms_sheetfielddef" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="webforms_sheetdef">
+        <PropertyRef Name="WebSheetDefID" />
+      </Principal>
+      <Dependent Role="webforms_sheetfielddef">
+        <PropertyRef Name="WebSheetDefID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

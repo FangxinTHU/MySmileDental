@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="odwebserviceModelStoreContainer" CdmEntityContainer="ODWebServiceEntities">
+    <EntitySetMapping Name="webforms_preference">
+      <EntityTypeMapping TypeName="IsTypeOf(odwebserviceModel.webforms_preference)">
+        <MappingFragment StoreEntitySet="webforms_preference">
+          <ScalarProperty Name="DentalOfficeID" ColumnName="DentalOfficeID" />
+          <ScalarProperty Name="ColorBorder" ColumnName="ColorBorder" />
+          <ScalarProperty Name="CultureName" ColumnName="CultureName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webforms_sheet">
+      <EntityTypeMapping TypeName="IsTypeOf(odwebserviceModel.webforms_sheet)">
+        <MappingFragment StoreEntitySet="webforms_sheet">
+          <ScalarProperty Name="SheetID" ColumnName="SheetID" />
+          <ScalarProperty Name="DentalOfficeID" ColumnName="DentalOfficeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SheetType" ColumnName="SheetType" />
+          <ScalarProperty Name="DateTimeSheet" ColumnName="DateTimeSheet" />
+          <ScalarProperty Name="FontSize" ColumnName="FontSize" />
+          <ScalarProperty Name="FontName" ColumnName="FontName" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="IsLandscape" ColumnName="IsLandscape" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webforms_sheetdef">
+      <EntityTypeMapping TypeName="IsTypeOf(odwebserviceModel.webforms_sheetdef)">
+        <MappingFragment StoreEntitySet="webforms_sheetdef">
+          <ScalarProperty Name="WebSheetDefID" ColumnName="WebSheetDefID" />
+          <ScalarProperty Name="DentalOfficeID" ColumnName="DentalOfficeID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="SheetType" ColumnName="SheetType" />
+          <ScalarProperty Name="FontSize" ColumnName="FontSize" />
+          <ScalarProperty Name="FontName" ColumnName="FontName" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="IsLandscape" ColumnName="IsLandscape" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webforms_sheetfield">
+      <EntityTypeMapping TypeName="IsTypeOf(odwebserviceModel.webforms_sheetfield)">
+        <MappingFragment StoreEntitySet="webforms_sheetfield">
+          <ScalarProperty Name="SheetFieldID" ColumnName="SheetFieldID" />
+          <ScalarProperty Name="SheetID" ColumnName="SheetID" />
+          <ScalarProperty Name="FieldType" ColumnName="FieldType" />
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+          <ScalarProperty Name="FieldValue" ColumnName="FieldValue" />
+          <ScalarProperty Name="FontSize" ColumnName="FontSize" />
+          <ScalarProperty Name="FontName" ColumnName="FontName" />
+          <ScalarProperty Name="FontIsBold" ColumnName="FontIsBold" />
+          <ScalarProperty Name="XPos" ColumnName="XPos" />
+          <ScalarProperty Name="YPos" ColumnName="YPos" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="GrowthBehavior" ColumnName="GrowthBehavior" />
+          <ScalarProperty Name="RadioButtonValue" ColumnName="RadioButtonValue" />
+          <ScalarProperty Name="RadioButtonGroup" ColumnName="RadioButtonGroup" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="TabOrder" ColumnName="TabOrder" />
+          <ScalarProperty Name="ReportableName" ColumnName="ReportableName" />
+          <ScalarProperty Name="TextAlign" ColumnName="TextAlign" />
+          <ScalarProperty Name="ItemColor" ColumnName="ItemColor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="webforms_sheetfielddef">
+      <EntityTypeMapping TypeName="IsTypeOf(odwebserviceModel.webforms_sheetfielddef)">
+        <MappingFragment StoreEntitySet="webforms_sheetfielddef">
+          <ScalarProperty Name="WebSheetFieldDefID" ColumnName="WebSheetFieldDefID" />
+          <ScalarProperty Name="WebSheetDefID" ColumnName="WebSheetDefID" />
+          <ScalarProperty Name="FieldType" ColumnName="FieldType" />
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+          <ScalarProperty Name="FieldValue" ColumnName="FieldValue" />
+          <ScalarProperty Name="FontSize" ColumnName="FontSize" />
+          <ScalarProperty Name="FontName" ColumnName="FontName" />
+          <ScalarProperty Name="FontIsBold" ColumnName="FontIsBold" />
+          <ScalarProperty Name="XPos" ColumnName="XPos" />
+          <ScalarProperty Name="YPos" ColumnName="YPos" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="GrowthBehavior" ColumnName="GrowthBehavior" />
+          <ScalarProperty Name="RadioButtonValue" ColumnName="RadioButtonValue" />
+          <ScalarProperty Name="RadioButtonGroup" ColumnName="RadioButtonGroup" />
+          <ScalarProperty Name="IsRequired" ColumnName="IsRequired" />
+          <ScalarProperty Name="ImageData" ColumnName="ImageData" />
+          <ScalarProperty Name="TabOrder" ColumnName="TabOrder" />
+          <ScalarProperty Name="ReportableName" ColumnName="ReportableName" />
+          <ScalarProperty Name="TextAlign" ColumnName="TextAlign" />
+          <ScalarProperty Name="ItemColor" ColumnName="ItemColor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

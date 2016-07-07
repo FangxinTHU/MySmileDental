@@ -1,0 +1,60 @@
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\obj\x86\Debug\UnitTests.csprojResolveAssemblyReference.cache
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\obj\x86\Debug\UnitTests.FormUnitTests.resources
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\obj\x86\Debug\UnitTests.Properties.Resources.resources
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\obj\x86\Debug\UnitTests.csproj.GenerateResource.Cache
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Unit Tests.exe.config
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Unit Tests.exe
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Unit Tests.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\CDT.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\CodeBase.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\CrudGenerator.exe
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\OpenDental.exe
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\OpenDentBusiness.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Tao.Platform.Windows.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Tao.OpenGl.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\SigPlusNET.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\DirectShowLib-2005.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\RS232.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\ODR.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\SparksToothChart.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\MigraDoc.DocumentObjectModel.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Interop.Word.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\xImageDeviceManager.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\AxInterop.AcroPDFLib.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\RdlViewer.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\RdlEngine.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\PdfSharp.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Health.Direct.Common.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\NHunspell.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\VBbridges.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\NDde.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Ionic.Zip.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Tamir.SharpSSH.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\MySql.Data.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\MigraDoc.Rendering.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\OpenDentalWpf.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Microsoft.DirectX.Direct3D.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Health.Direct.Agent.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Oracle.DataAccess.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\OpenPop.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Health.Direct.ResolverPlugins.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Microsoft.DirectX.Direct3DX.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Microsoft.DirectX.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Interop.Microsoft.Office.Core.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Interop.VBIDE.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Interop.AcroPDFLib.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\Org.Mentalis.Security.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\DiffieHellman.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\PdfSharp.Charting.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\CodeBase.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\OpenDental.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\OpenDentBusiness.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\OpenDentBusiness.xml
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\CrudGenerator.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\ODR.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\SparksToothChart.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\RdlViewer.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\RdlEngine.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\bin\Debug\OpenDentalWpf.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\obj\x86\Debug\Unit Tests.exe
+C:\Users\fangx\Desktop\Opendental15.4.35\UnitTests\obj\x86\Debug\Unit Tests.pdb

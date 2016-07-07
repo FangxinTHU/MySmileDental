@@ -1,0 +1,12 @@
+C:\Users\fangx\Desktop\Opendental15.4.35\RdlViewer\bin\Debug\RdlViewer.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\RdlViewer\bin\Debug\RdlViewer.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\RdlViewer\bin\Debug\RdlEngine.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\RdlViewer\bin\Debug\RdlEngine.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\RdlViewer\obj\x86\Debug\RdlViewer.csprojResolveAssemblyReference.cache
+C:\Users\fangx\Desktop\Opendental15.4.35\RdlViewer\obj\x86\Debug\fyiReporting.RdlViewer.DataSourcePassword.resources
+C:\Users\fangx\Desktop\Opendental15.4.35\RdlViewer\obj\x86\Debug\fyiReporting.RdlViewer.DialogMessages.resources
+C:\Users\fangx\Desktop\Opendental15.4.35\RdlViewer\obj\x86\Debug\fyiReporting.RdlViewer.PageDrawing.resources
+C:\Users\fangx\Desktop\Opendental15.4.35\RdlViewer\obj\x86\Debug\fyiReporting.RdlViewer.RdlViewer.resources
+C:\Users\fangx\Desktop\Opendental15.4.35\RdlViewer\obj\x86\Debug\RdlViewer.csproj.GenerateResource.Cache
+C:\Users\fangx\Desktop\Opendental15.4.35\RdlViewer\obj\x86\Debug\RdlViewer.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\RdlViewer\obj\x86\Debug\RdlViewer.pdb

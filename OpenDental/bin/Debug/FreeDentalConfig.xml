@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConnectionSettings>
+    <DatabaseConnection>
+        <ComputerName>localhost</ComputerName>
+        <Database>opendental</Database>
+        <User>root</User>
+        <Password></Password>
+        <NoShowOnStartup>True</NoShowOnStartup>
+    </DatabaseConnection>
+    <DatabaseType>MySql</DatabaseType>
+</ConnectionSettings>

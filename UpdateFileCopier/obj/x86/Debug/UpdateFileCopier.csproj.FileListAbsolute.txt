@@ -1,0 +1,9 @@
+C:\Users\fangx\Desktop\Opendental15.4.35\UpdateFileCopier\bin\Debug\UpdateFileCopier.exe.config
+C:\Users\fangx\Desktop\Opendental15.4.35\UpdateFileCopier\bin\Debug\UpdateFileCopier.exe
+C:\Users\fangx\Desktop\Opendental15.4.35\UpdateFileCopier\bin\Debug\UpdateFileCopier.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\UpdateFileCopier\obj\x86\Debug\UpdateFileCopier.csprojResolveAssemblyReference.cache
+C:\Users\fangx\Desktop\Opendental15.4.35\UpdateFileCopier\obj\x86\Debug\UpdateFileCopier.FormMain.resources
+C:\Users\fangx\Desktop\Opendental15.4.35\UpdateFileCopier\obj\x86\Debug\UpdateFileCopier.Properties.Resources.resources
+C:\Users\fangx\Desktop\Opendental15.4.35\UpdateFileCopier\obj\x86\Debug\UpdateFileCopier.csproj.GenerateResource.Cache
+C:\Users\fangx\Desktop\Opendental15.4.35\UpdateFileCopier\obj\x86\Debug\UpdateFileCopier.exe
+C:\Users\fangx\Desktop\Opendental15.4.35\UpdateFileCopier\obj\x86\Debug\UpdateFileCopier.pdb

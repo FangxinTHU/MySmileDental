@@ -1,0 +1,372 @@
+(1)C:\Users\fangx\Desktop\Opendental15.4.35\OpenDental\Forms\FormPayment.cs
+第1355行
+
+private void panelXcharge_MouseClick(object sender,MouseEventArgs e) {
+            return;
+		}
+中去掉了以下部分：
+
+
+if(e.Button != MouseButtons.Left) {
+				return;
+			}
+			if(textAmount.Text=="" || PIn.Double(textAmount.Text)==0) {
+				MsgBox.Show(this,"Please enter an amount first.");
+				return;
+			}
+			if(!HasXCharge()) {
+				return;
+			}
+			if(_listPaySplits.Count>0 && PIn.Double(textAmount.Text)!=PIn.Double(textTotal.Text)
+				&& (_listPaySplits.Count!=1 || _listPaySplits[0].PayPlanNum==0)) //Not one paysplit attached to payplan
+			{
+				MsgBox.Show(this, "Split totals must equal payment amount before running a credit card transaction.");
+				return;
+			}
+			string resultfile=Path.Combine(Path.GetDirectoryName(_xPath),"XResult.txt");
+			try {
+				File.Delete(resultfile);//delete the old result file.
+			}
+			catch {
+				MsgBox.Show(this,"Could not delete XResult.txt file.  It may be in use by another program, flagged as read-only, or you might not have "
+					+"sufficient permissions.");
+				return;
+			}
+			bool needToken=false;
+			bool newCard=false;
+			bool hasXToken=false;
+			bool notRecurring=false;
+			string xPayTypeNum=ProgramProperties.GetPropVal(_xProg.ProgramNum,"PaymentType",_paymentCur.ClinicNum);
+			//still need to add functionality for accountingAutoPay
+			listPayType.SelectedIndex=DefC.GetOrder(DefCat.PaymentTypes,PIn.Long(xPayTypeNum));
+			SetComboDepositAccounts();
+			/*XCharge.exe [/TRANSACTIONTYPE:type] [/AMOUNT:amount] [/ACCOUNT:account] [/EXP:exp]
+				[?TRACK:track擼 [/ZIP:zip] [/ADDRESS:address] [/RECEIPT:receipt] [/CLERK:clerk]
+				[/APPROVALCODE:approval] [/AUTOPROCESS] [/AUTOCLOSE] [/STAYONTOP] [/MID]
+				[/RESULTFILE:擟:\Program Files\X-Charge\LocalTran\XCResult.txt?/
+			ProcessStartInfo info=new ProcessStartInfo(_xPath);
+			Patient pat=Patients.GetPat(_paymentCur.PatNum);
+			PatientNote patnote=PatientNotes.Refresh(pat.PatNum,pat.Guarantor);
+			info.Arguments="";
+			double amt=PIn.Double(textAmount.Text);
+			if(amt<0) {//X-Charge always wants a positive number, even for returns.
+				amt*=-1;
+			}
+			info.Arguments+="/AMOUNT:"+amt.ToString("F2")+" ";
+			CreditCard cc=null;
+			List<CreditCard> creditCards=CreditCards.Refresh(_patCur.PatNum);
+			for(int i=0;i<creditCards.Count;i++) {
+				if(i==comboCreditCards.SelectedIndex) {
+					cc=creditCards[i];
+				}
+			}
+			//Show window to lock in the transaction type.
+			FormXchargeTrans FormXT=new FormXchargeTrans();
+			FormXT.PrintReceipt=PIn.Bool(ProgramProperties.GetPropVal(_xProg.ProgramNum,"PrintReceipt",_paymentCur.ClinicNum));
+			FormXT.PromptSignature=PIn.Bool(ProgramProperties.GetPropVal(_xProg.ProgramNum,"PromptSignature",_paymentCur.ClinicNum));
+			FormXT.ShowDialog();
+			if(FormXT.DialogResult!=DialogResult.OK) {
+				return;
+			}
+			int tranType=FormXT.TransactionType;
+			decimal cashAmt=FormXT.CashBackAmount;
+			string cashBack=cashAmt.ToString("F2");
+			_promptSignature=FormXT.PromptSignature;
+			_printReceipt=FormXT.PrintReceipt;
+			if(cc!=null) {
+				//Have credit card on file
+				if(!string.IsNullOrEmpty(cc.XChargeToken)) {//Recurring charge
+					hasXToken=true;
+					if(CreditCards.IsDuplicateXChargeToken(cc.XChargeToken)) {
+						MsgBox.Show(this,"This card shares a token with another card. Delete it from the Credit Card Manage window and re-add it.");
+						return;
+					}
+					/*       ***** An example of how recurring charges work***** 
+					C:\Program Files\X-Charge\XCharge.exe /TRANSACTIONTYPE:Purchase /LOCKTRANTYPE
+					/AMOUNT:10.00 /LOCKAMOUNT /XCACCOUNTID:XAW0JWtx5kjG8 /RECEIPT:RC001
+					/LOCKRECEIPT /CLERK:Clerk /LOCKCLERK /RESULTFILE:C:\ResultFile.txt /USERID:system
+					/PASSWORD:system /STAYONTOP /AUTOPROCESS /AUTOCLOSE /HIDEMAINWINDOW
+					/RECURRING /SMALLWINDOW /NORESULTDIALOG
+					*/
+				}
+				else {//Not recurring charge, on file and might need a token.
+					notRecurring=true;
+					if(!PrefC.GetBool(PrefName.StoreCCnumbers)) {//Use token only if user has has pref unchecked in module setup (allow store credit card nums).
+						needToken=true;//Will create a token from result file so credit card info isn't saved in our db.
+					}
+				}
+			}
+			else {//Add card option was selected in credit card drop down. No other possibility.
+				newCard=true;
+			}
+			info.Arguments+=GetXChargeTransactionTypeCommands(tranType,hasXToken,notRecurring,cc,cashBack);
+			if(newCard) {
+				info.Arguments+="\"/ZIP:"+pat.Zip+"\" ";
+				info.Arguments+="\"/ADDRESS:"+pat.Address+"\" ";
+			}
+			else {
+				if(cc.CCExpiration!=null && cc.CCExpiration.Year>2005) {
+					info.Arguments+="/EXP:"+cc.CCExpiration.ToString("MMyy")+" ";
+				}
+				if(!string.IsNullOrEmpty(cc.Zip)) {
+					info.Arguments+="\"/ZIP:"+cc.Zip+"\" ";
+				}
+				else {
+					info.Arguments+="\"/ZIP:"+pat.Zip+"\" ";
+				}
+				if(!string.IsNullOrEmpty(cc.Address)) {
+					info.Arguments+="\"/ADDRESS:"+cc.Address+"\" ";
+				}
+				else {
+					info.Arguments+="\"/ADDRESS:"+pat.Address+"\" ";
+				}
+				if(hasXToken) {//Special parameter for tokens.
+					info.Arguments+="/RECURRING ";
+				}
+			}
+			info.Arguments+="/RECEIPT:Pat"+_paymentCur.PatNum.ToString()+" ";//aka invoice#
+			info.Arguments+="\"/CLERK:"+Security.CurUser.UserName+"\" /LOCKCLERK ";
+			info.Arguments+="/RESULTFILE:\""+resultfile+"\" ";
+			info.Arguments+="/USERID:"+ProgramProperties.GetPropVal(_xProg.ProgramNum,"Username",_paymentCur.ClinicNum)+" ";
+			info.Arguments+="/PASSWORD:"+CodeBase.MiscUtils.Decrypt(ProgramProperties.GetPropVal(_xProg.ProgramNum,"Password",_paymentCur.ClinicNum))+" ";
+			info.Arguments+="/PARTIALAPPROVALSUPPORT:T ";
+			info.Arguments+="/AUTOCLOSE ";
+			info.Arguments+="/HIDEMAINWINDOW ";
+			info.Arguments+="/SMALLWINDOW ";
+			info.Arguments+="/GETXCACCOUNTID ";
+			info.Arguments+="/NORESULTDIALOG ";
+			Cursor=Cursors.WaitCursor;
+			Process process=new Process();
+			process.StartInfo=info;
+			process.EnableRaisingEvents=true;
+			process.Start();
+			while(!process.HasExited) {
+				Application.DoEvents();
+			}
+			Thread.Sleep(200);//Wait 2/10 second to give time for file to be created.
+			Cursor=Cursors.Default;
+			string resulttext="";
+			string line="";
+			bool showApprovedAmtNotice=false;
+			bool xAdjust=false;
+			bool xReturn=false;
+			bool xVoid=false;
+			double approvedAmt=0;
+			double additionalFunds=0;
+			string xChargeToken="";
+			string accountMasked="";
+			string expiration="";
+			string signatureResult="";
+			string receipt="";
+			bool isDigitallySigned=false;
+			try {
+				using(TextReader reader=new StreamReader(resultfile)) {
+					line=reader.ReadLine();
+					/*Example of successful transaction:
+						RESULT=SUCCESS
+						TYPE=Purchase
+						APPROVALCODE=000064
+						ACCOUNT=XXXXXXXXXXXX6781
+						ACCOUNTTYPE=VISA*
+						AMOUNT=1.77
+						AVSRESULT=Y
+						CVRESULT=M
+					*/
+					while(line!=null) {
+						if(!line.StartsWith("RECEIPT=")) {//Don't include the receipt string in the PayNote
+							if(resulttext!="") {
+								resulttext+="\r\n";
+							}
+							resulttext+=line;
+						}
+						if(line.StartsWith("RESULT=")) {
+							if(line!="RESULT=SUCCESS") {
+								//Charge was a failure and there might be a description as to why it failed. Continue to loop through line.
+								while(line!=null) {
+									line=reader.ReadLine();
+									if(line!=null && !line.StartsWith("RECEIPT=")) {//Don't include the receipt string in the PayNote
+										resulttext+="\r\n"+line;
+									}
+								}
+								needToken=false;//Don't update CCard due to failure
+								newCard=false;//Don't insert CCard due to failure
+								_isCCDeclined=true;
+								break;
+							}
+							if(tranType==1) {
+								xReturn=true;
+							}
+							if(tranType==6) {
+								xAdjust=true;
+							}
+							if(tranType==7) {
+								xVoid=true;
+							}							
+							_isCCDeclined=false;
+						}
+						if(line.StartsWith("APPROVEDAMOUNT=")) {
+							approvedAmt=PIn.Double(line.Substring(15));
+							if(approvedAmt != amt) {
+								showApprovedAmtNotice=true;
+							}
+						}
+						if(line.StartsWith("XCACCOUNTID=")) {
+							xChargeToken=PIn.String(line.Substring(12));
+						}
+						if(line.StartsWith("ACCOUNT=")) {
+							accountMasked=PIn.String(line.Substring(8));
+						}
+						if(line.StartsWith("EXPIRATION=")) {
+							expiration=PIn.String(line.Substring(11));
+						}
+						if(line.StartsWith("ADDITIONALFUNDSREQUIRED=")) {
+							additionalFunds=PIn.Double(line.Substring(24));
+						}
+						if(line.StartsWith("SIGNATURE=") && line.Length>10) {
+							signatureResult=PIn.String(line.Substring(10));
+							//A successful digitally signed signature will say SIGNATURE=C:\Users\Folder\Where\The\Signature\Is\Stored.bmp
+							if(signatureResult!="NOT SUPPORTED" && signatureResult!="FAILED") {
+								isDigitallySigned=true;
+							}
+						}
+						if(line.StartsWith("RECEIPT=")) {
+							receipt=PIn.String(line.Replace("RECEIPT=","").Replace("\\n","\n"));//The receipt from X-Charge escapes the newline characters
+							if(isDigitallySigned) {
+								//Replace X____________________________ with 'Electronically signed'
+								receipt.Split('\n').ToList().FindAll(x => x.StartsWith("X___")).ForEach(x => x="Electronically signed");
+							}
+							receipt=receipt.Replace("\r","").Replace("\n","\r\n");//remove any existing \r's before replacing \n's with \r\n's
+						}
+						line=reader.ReadLine();
+					}
+					if(needToken && !string.IsNullOrEmpty(xChargeToken)) {
+						//Only way this code can be hit is if they have set up a credit card and it does not have a token.
+						//So we'll use the created token from result file and assign it to the coresponding account.
+						//Also will delete the credit card number and replace it with secure masked number.
+						cc.XChargeToken=xChargeToken;
+						cc.CCNumberMasked=accountMasked;
+						cc.CCExpiration=new DateTime(Convert.ToInt32("20"+expiration.Substring(2,2)),Convert.ToInt32(expiration.Substring(0,2)),1);
+						//Add the default procedures to this card if those procedures are not attached to any other active card
+						List<string> listDefaultProcs=PrefC.GetString(PrefName.DefaultCCProcs).Split(',').ToList();
+						listDefaultProcs.RemoveAll(x => CreditCards.ProcLinkedToCard(_patCur.PatNum,x,cc.CreditCardNum));
+						cc.Procedures=string.Join(",",listDefaultProcs);
+						CreditCards.Update(cc);
+					}
+					if(newCard) {
+						if(!string.IsNullOrEmpty(xChargeToken) && FormXT.SaveToken) {
+							cc=new CreditCard();
+							List<CreditCard> itemOrderCount=CreditCards.Refresh(_patCur.PatNum);
+							cc.ItemOrder=itemOrderCount.Count;
+							cc.PatNum=_patCur.PatNum;
+							cc.CCExpiration=new DateTime(Convert.ToInt32("20"+expiration.Substring(2,2)),Convert.ToInt32(expiration.Substring(0,2)),1);
+							cc.XChargeToken=xChargeToken;
+							cc.CCNumberMasked=accountMasked;
+							//Add the default procedures to this card if those procedures are not attached to any other active card
+							List<string> listDefaultProcs=PrefC.GetString(PrefName.DefaultCCProcs).Split(',').ToList();
+							listDefaultProcs.RemoveAll(x => CreditCards.ProcLinkedToCard(_patCur.PatNum,x,0));
+							cc.Procedures=string.Join(",",listDefaultProcs);
+							CreditCards.Insert(cc);
+						}
+						else if(string.IsNullOrEmpty(xChargeToken)) {//Shouldn't happen again but leaving just in case.
+							MsgBox.Show(this,"X-Charge didn't return a token so credit card information couldn't be saved.");
+						}
+					}
+				}
+			}
+			catch {
+				MessageBox.Show(Lan.g(this,"There was a problem charging the card.  Please run the credit card report from inside X-Charge to verify that "
+					+"the card was not actually charged.")+"\r\n"+Lan.g(this,"If the card was charged, you need to make sure that the payment amount matches.")
+					+"\r\n"+Lan.g(this,"If the card was not charged, please try again."));
+				return;
+			}
+			if(showApprovedAmtNotice && !xVoid && !xAdjust && !xReturn) {
+				MessageBox.Show(Lan.g(this,"The amount you typed in")+": "+amt.ToString("C")+"\r\n"+Lan.g(this,"does not match the approved amount returned")
+					+": "+approvedAmt.ToString("C")+".\r\n"+Lan.g(this,"The amount will be changed to reflect the approved amount charged."),"Alert",
+					MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+				textAmount.Text=approvedAmt.ToString("F");
+			}
+			if(xAdjust) {
+				MessageBox.Show(Lan.g(this,"The amount will be changed to the X-Charge approved amount")+": "+approvedAmt.ToString("C"));
+				textNote.Text="";
+				textAmount.Text=approvedAmt.ToString("F");
+			}
+			else if(xReturn) {
+				textAmount.Text="-"+approvedAmt.ToString("F");
+			}
+			else if(xVoid) {
+				if(IsNew) {
+					if(!_wasCreditCardSuccessful) {
+						textAmount.Text="-"+approvedAmt.ToString("F");
+						textNote.Text+=resulttext;
+					}
+					_paymentCur.Receipt=receipt;
+					if (_printReceipt && receipt!="")	{
+						PrintReceipt(receipt);
+						_printReceipt=false;
+					}
+					SavePaymentToDb();
+				}
+				if(!IsNew || _wasCreditCardSuccessful) {//Create a new negative payment if the void is being run from an existing payment
+					if(_listPaySplits.Count==0) {
+						AddOneSplit();
+						FillMain();
+					}
+					else if(_listPaySplits.Count==1//if one split
+						&& _listPaySplits[0].PayPlanNum!=0//and split is on a payment plan
+						&& _listPaySplits[0].SplitAmt!=_paymentCur.PayAmt)//and amount doesn't match payment
+					{
+						_listPaySplits[0].SplitAmt=_paymentCur.PayAmt;//make amounts match automatically
+						textTotal.Text=textAmount.Text;
+					}
+					else if(_listPaySplits.Count==1//if one split
+						&& _listPaySplits[0].ProcDate!=_paymentCur.PayDate
+						&& _listPaySplits[0].ProcNum==0)//not attached to procedure
+					{
+						if(MsgBox.Show(this,MsgBoxButtons.YesNo,"Change split date to match payment date?")) {
+							_listPaySplits[0].ProcDate=_paymentCur.PayDate;
+						}
+					}
+					_paymentCur.IsSplit=_listPaySplits.Count>1;
+					Payment voidPayment=_paymentCur.Clone();
+					voidPayment.PayAmt*=-1;//the negation of the original amount
+					voidPayment.PayNote=resulttext;
+					voidPayment.Receipt=receipt;
+					if(_printReceipt && receipt!="") {
+						PrintReceipt(receipt);
+					}
+					voidPayment.PayNum=Payments.Insert(voidPayment);
+					foreach(PaySplit splitCur in _listPaySplits) {//Modify the paysplits for the original transaction to work for the void transaction
+						PaySplit split=splitCur.Copy();
+						split.SplitAmt*=-1;
+						split.PayNum=voidPayment.PayNum;
+						PaySplits.Insert(split);
+					}
+				}
+				DialogResult=DialogResult.OK;//Close FormPayment window now so the user will not have the option to hit Cancel
+				return;
+			}			
+			_wasCreditCardSuccessful=!_isCCDeclined;//If the transaction is not a void transaction, we will void this transaction if the user hits Cancel
+			if(additionalFunds>0) {
+				MessageBox.Show(Lan.g(this,"Additional funds required")+": "+additionalFunds.ToString("C"));
+			}
+			if(textNote.Text!="") {
+				textNote.Text+="\r\n";
+			}
+			textNote.Text+=resulttext;
+			_paymentCur.Receipt=receipt;
+			if(receipt!="") {
+				butPrintReceipt.Visible=true;
+				if(_printReceipt) {
+					PrintReceipt(receipt);
+				}
+			}
+			
+			
+			
+			
+			
+(2)C:\Users\fangx\Desktop\Opendental15.4.35\OpenDental\Forms\FormPatientSelect.cs
+去掉1228行至1255行的注释、去掉1255行函数最后一个输入参数
+
+(3)C:\Users\fangx\Desktop\Opendental15.4.35\OpenDentBusiness\Data Interface\Patients.cs
+去掉372行的非法字符

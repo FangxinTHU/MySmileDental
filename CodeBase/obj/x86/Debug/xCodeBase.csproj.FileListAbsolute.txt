@@ -1,0 +1,13 @@
+C:\Users\fangx\Desktop\Opendental15.4.35\CodeBase\bin\Debug\CodeBase.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\CodeBase\bin\Debug\CodeBase.pdb
+C:\Users\fangx\Desktop\Opendental15.4.35\CodeBase\bin\Debug\SigPlusNET.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\CodeBase\bin\Debug\Tao.FreeGlut.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\CodeBase\bin\Debug\Tao.OpenGl.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\CodeBase\bin\Debug\Tao.Platform.Windows.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\CodeBase\obj\x86\Debug\xCodeBase.csprojResolveAssemblyReference.cache
+C:\Users\fangx\Desktop\Opendental15.4.35\CodeBase\obj\x86\Debug\CodeBase.PrintPanel.resources
+C:\Users\fangx\Desktop\Opendental15.4.35\CodeBase\obj\x86\Debug\CodeBase.Properties.Resources.resources
+C:\Users\fangx\Desktop\Opendental15.4.35\CodeBase\obj\x86\Debug\CodeBase.MsgBoxCopyPaste.resources
+C:\Users\fangx\Desktop\Opendental15.4.35\CodeBase\obj\x86\Debug\xCodeBase.csproj.GenerateResource.Cache
+C:\Users\fangx\Desktop\Opendental15.4.35\CodeBase\obj\x86\Debug\CodeBase.dll
+C:\Users\fangx\Desktop\Opendental15.4.35\CodeBase\obj\x86\Debug\CodeBase.pdb
